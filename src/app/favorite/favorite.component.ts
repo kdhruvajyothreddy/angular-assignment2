@@ -11,7 +11,7 @@ export interface FavoriteChangedEventArgs { // Creating an interface for the pro
 })
 export class FavoriteComponent implements OnInit {
   @Input('is-favorite') isFavorite: boolean; 
-  @Output() change = new EventEmitter(); 
+  @Output('change') change = new EventEmitter(); // Creating an alias 'change' for the output property 'change'
   constructor() { }
 
   ngOnInit(): void {
