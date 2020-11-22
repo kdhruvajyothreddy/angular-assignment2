@@ -10,4 +10,8 @@ export class AppComponent {
     title: "Title",
     isFavorite: true;
   }
+
+  onFavoriteChanged() { // Method created to be called to create a log when an event is triggered
+    console.log("Favorite Changed");    
+  }
 }
