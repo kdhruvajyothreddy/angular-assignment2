@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FavoriteComponent } from './favorite/favorite.component';
+import { FavoriteChangedEventArgs, FavoriteComponent } from './favorite/favorite.component'; 
+// importing the interface 'FavoriteChangedEventArgs' from the 'FavoriteComponent'
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
     isFavorite: true;
   }
 
-  onFavoriteChanged(isFavorite) { // Using the value 'isFavorite', which is passed from the front end
-    console.log("Favorite Changed to: ", isFavorite); // Logging the value   
+  onFavoriteChanged(eventArgs: FavoriteChangedEventArgs) { // Passing the object from the 'FavoriteComponent'
+    console.log("Favorite Changed to: ", eventArgs); // Logging the value   
   }
 }
