@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-assignment2';
+  post: { // Creating a component to set "isFavorite" property to true
+    title: "Title",
+    isFavorite: true;
+  }
 }
