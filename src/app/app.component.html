@@ -1,3 +1,3 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<favorite is-favorite="post.isFavorite" (change)="onFavoriteChanged()"></favorite> <!-- Using 'change' property and calling the method 'onFavoriteChanged'-->
+<favorite is-favorite="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite> <!-- Passing the event from DOM -->

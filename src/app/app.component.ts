@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  post: { // Creating a component to set "isFavorite" property to true
+  post: { 
     title: "Title",
     isFavorite: true;
   }
 
-  onFavoriteChanged() { // Method created to be called to create a log when an event is triggered
-    console.log("Favorite Changed");    
+  onFavoriteChanged(isFavorite) { // Using the value 'isFavorite', which is passed from the front end
+    console.log("Favorite Changed to: ", isFavorite); // Logging the value   
   }
 }
