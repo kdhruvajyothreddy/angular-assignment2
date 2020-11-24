@@ -1,0 +1,4 @@
+.fa-star {
+    color: blueviolet;
+}
+/* This style definiton that will take a higher precedence based on when it is called in the component file */
