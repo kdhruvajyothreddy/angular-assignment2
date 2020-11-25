@@ -1,0 +1,9 @@
+<div class="card"> <!-- 'card' is a bootstrap element --> 
+    <div class="card-header"> <!-- 'card-header' is a bootstrap element for header -->
+        <ng-content select=".heading"></ng-content> <!-- Used 'ng-content' and calling a class or id. Here class is 'heading' -->
+    </div>
+    <div class="card-body"> <!-- 'card-body' is a bootstrap element for body -->
+        <ng-content select=".body"></ng-content>
+    </div>
+</div>
+<!-- Created this content using div.card>div.card-header+div.card-body to generate bootstrap elements -->

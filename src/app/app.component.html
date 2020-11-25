@@ -1,3 +1,9 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<favorite is-favorite="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
+<bootstrap-panel> <!-- Using 'bootstrap-panel' selector -->
+    <div class="heading">Heading</div> <!-- Setting a class name 'heading' for the bootstrap header, called by 'panel' html ng-content -->
+    <div class="body"> <!-- Setting a class name 'body' for the bootstrap body, called by 'panel' html ng-content -->
+        <h2>Body</h2> 
+        <p>Some content here....</p>
+    </div>
+</bootstrap-panel>
