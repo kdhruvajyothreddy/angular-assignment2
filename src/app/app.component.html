@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<like
-    [isActive] = "tweet.isActive"
-    [likesCounted] = "tweet.likesCounted"
->
-<!-- Using assigned initial default values to properties "isActive" and "likesCounted" -->
-</like>
+<div *ngIf="courses.length > 0">
+    List of courses
+</div>
+<div *ngIf="courses.length ==0">
+    No courses yet
+</div>

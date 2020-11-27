@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  tweet = { // Created a "tweet" array to assign default initial values to properties used on front end
-    body: "......",
-    isActive: false,
-    likesCounted: 0
-  }
+  courses=[1,2];
 
 }
