@@ -1,9 +1,8 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<bootstrap-panel> <!-- Using 'bootstrap-panel' selector -->
-    <ng-container class="heading">Heading</ng-container> <!-- Using ng-container for class 'heading' to avoid extra div markup -->
-    <ng-container class="body"> <!-- Using ng-container for class 'body' to avoid extra div markup -->
-        <h2>Body</h2> 
-        <p>Some content here....</p>
-    </ng-container>
-</bootstrap-panel>
+<like
+    [isActive] = "tweet.isActive"
+    [likesCounted] = "tweet.likesCounted"
+>
+<!-- Using assigned initial default values to properties "isActive" and "likesCounted" -->
+</like>
