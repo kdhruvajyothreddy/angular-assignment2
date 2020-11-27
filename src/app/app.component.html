@@ -1,11 +1,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<div *ngIf="courses.length > 0; then coursesList else noCourses"></div> 
-<!-- Calling ng-templates conditionally using ngIf -->
-
-<ng-template #coursesList>
+<div [hidden]="courses.length == 0"> 
     List of courses
-</ng-template>
-<ng-template #noCourses>
+</div> 
+
+<div [hidden]="courses.length > 0">
     No courses yet
-</ng-template>
+</div>
+<!-- Using "hidden" property to hide elements conditionally -->
