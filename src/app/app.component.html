@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<div *ngIf="courses.length > 0">
+<div *ngIf="courses.length > 0; then coursesList else noCourses"></div> 
+<!-- Calling ng-templates conditionally using ngIf -->
+
+<ng-template #coursesList>
     List of courses
-</div>
-<div *ngIf="courses.length ==0">
+</ng-template>
+<ng-template #noCourses>
     No courses yet
-</div>
+</ng-template>
