@@ -6,19 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses;
-
-  loadCourses() {
-    this.courses = [
-      {id: 1, name: 'course1'},
-      {id: 2, name: 'course2'},
-      {id: 3, name: 'course3'},
-      {id: 4, name: 'course4'}
-    ];
-  }
-  // "loadCourses()" method to be called on the front end to load the list of objects
-
-  trackCourse(index, course) {
-    return course ? course : undefined;
-  }
+  canSave = true;
 }
+// "canSave" property to be used to render the style on the front end conditionally
