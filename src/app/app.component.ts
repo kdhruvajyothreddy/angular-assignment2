@@ -17,4 +17,8 @@ export class AppComponent {
     ];
   }
   // "loadCourses()" method to be called on the front end to load the list of objects
+
+  trackCourse(index, course) {
+    return course ? course : undefined;
+  }
 }
