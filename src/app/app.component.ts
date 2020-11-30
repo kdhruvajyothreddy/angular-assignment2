@@ -6,20 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses = [
-    {id: 1, name: 'course1'},
-    {id: 2, name: 'course2'},
-    {id: 3, name: 'course3'},
-    {id: 4, name: 'course4'}
-  ]; // Created a list of objects to render each object
+  courses;
 
-  onAdd() {
-    this.courses.push({id: 5, name: 'course5'});
-    // To append the course object to the list to be added on the front end
+  loadCourses() {
+    this.courses = [
+      {id: 1, name: 'course1'},
+      {id: 2, name: 'course2'},
+      {id: 3, name: 'course3'},
+      {id: 4, name: 'course4'}
+    ];
   }
-
-  onChange(course) {
-    course.name="UPDATED!"
-    // Using the passed the course object to update the name of the object to be automatically updated by Angular
-  }
+  // "loadCourses()" method to be called on the front end to load the list of objects
 }

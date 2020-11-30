@@ -1,12 +1,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
-<button class="btn btn-primary" (click)="onAdd()">Add</button>
-<!-- Added a button to call a method "onAdd()" to add a new object -->
+<button class="btn btn-primary" (click)="loadCourses()">Load Courses</button>
+<!-- Added a button to call a method "loadCourses()" to load the list of objects -->
 
 <ul>
     <li *ngFor="let course of courses"> 
         {{ course.name }}
-        <button class="btn btn-danger" (click)="onChange(course)">Update</button>
-        <!-- Adding an Update button to call a method "onChange(course)" to pass the course object, for Angular to automatically update the DOM Object -->
     </li>
 </ul>
