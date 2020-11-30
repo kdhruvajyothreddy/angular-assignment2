@@ -6,7 +6,7 @@
 <ul>
     <li *ngFor="let course of courses"> 
         {{ course.name }}
-        <button class="btn btn-danger" (click)="onRemove(course)">Remove</button>
-        <!-- Adding a Remove button to call a method "onRemove(course)" to pass the course object, so that it can be spliced or removed -->
+        <button class="btn btn-danger" (click)="onChange(course)">Update</button>
+        <!-- Adding an Update button to call a method "onChange(course)" to pass the course object, for Angular to automatically update the DOM Object -->
     </li>
 </ul>
