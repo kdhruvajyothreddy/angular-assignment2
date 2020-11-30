@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  canSave = true;
+  task = {
+    title: 'Review Applications',
+    assignee: {
+      name: 'John Smith'
+    }
+  }
+  // An object with a task, assignee and assignee's name
 }
-// "canSave" property to be used to render the style on the front end conditionally
+
