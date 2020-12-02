@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<div class="zippy">
+    <div class="zippy-heading"
+    [class.expanded]="isExpanded"
+    (click)=toggle()
+    >
+        {{ title }}
+        <span class="fas"
+        [ngClass]="{
+            'fa-angle-up': isExpanded,
+            'fa-angle-down': !isExpanded
+        }"
+        ></span>
+    </div>
+    <div *ngIf="isExpanded" class="zippy-body">
+        <ng-content></ng-content>
+    </div>
+</div>
