@@ -1,8 +1,11 @@
 <form>
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input ngModel name="firstName" #firstName="ngModel"  (change)="log(firstName)" id="firstName" type="text" class="form-control">
-        <!-- Using ngModel to create an instance of a form control class and associate it with this input field -->
+        <input required ngModel name="firstName" #firstName="ngModel"  (change)="log(firstName)" id="firstName" type="text" class="form-control">
+        <!-- Adding "required" to the field to add the validation as a required field -->
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name is required</div>
+        <!-- Using Bootstrap class "alert alert-danger" for validation div to appear in red. And using ngIf directive and input field's name
+        "firstName" to check for the conditions, if the field was touched and not valid -->
     </div>
     <div class="form-group">
         <label for="comment">Comment</label>
