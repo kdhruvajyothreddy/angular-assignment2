@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input ngModel name="firstName" #firstName="ngModel"  (change)="log(firstName)" id="firstName" type="text" class="form-control">
+        <!-- Using ngModel to create an instance of a form control class and associate it with this input field -->
+    </div>
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea ngModel name="comment" id="comment" cols="30" rows="10" for="comment" class="form-control"></textarea>
+        <!-- Using ngModel here too, to create an instance of a form control class and associate with this input field -->
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
