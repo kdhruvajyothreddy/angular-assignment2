@@ -4,3 +4,8 @@
 body {
     padding: 20px;
 }
+
+/* To create a red border for the form input fields with the class "form-control" which are invalid */
+.form-control.ng-touched.ng-invalid {
+    border: 2px solid red;
+}
