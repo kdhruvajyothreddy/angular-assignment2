@@ -1,14 +1,23 @@
 <form>
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input required ngModel minlength="3" maxlength="10" pattern="banana" name="firstName" #firstName="ngModel"  (change)="log(firstName)" id="firstName" type="text" class="form-control">
+        <input required ngModel 
+            minlength="3" maxlength="10" pattern="banana" 
+            name="firstName" #firstName="ngModel" 
+            (change)="log(firstName)" id="firstName" type="text" class="form-control">
         <!-- Using html 5 validations like "minlength", "maxlength" and "pattern" -->
         <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
             <!-- Using different validation messages for different validations -->
-            <div *ngIf="firstName.errors.required">First name is required.</div> <!-- Message for Required Validation -->
-            <div *ngIf="firstName.errors.minlength">First name should be of minimum {{ firstName.errors.minlength.requiredLength }} characters</div>
+            <div *ngIf="firstName.errors.required">
+                First name is required.
+            </div> <!-- Message for Required Validation -->
+            <div *ngIf="firstName.errors.minlength">
+                First name should be of minimum {{ firstName.errors.minlength.requiredLength }} characters
+            </div>
             <!-- Message for minimum length validation and using required length number dynamically by "requiredLength" -->
-            <div *ngIf="firstName.errors.pattern">First name doesn't match the pattern</div>
+            <div *ngIf="firstName.errors.pattern">
+                First name doesn't match the pattern
+            </div>
             <!-- Message for pattern validation -->
         </div>
     </div>
