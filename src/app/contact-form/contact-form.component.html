@@ -1,27 +1,32 @@
 <form #f="ngForm" (ngSubmit)="submit(f)"> <!-- Creating a template variable "f" and set it to ngForm. 
     Placing event binding using ngSubmit by calling a method "submit" and passing the template variable "f" -->
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input required ngModel 
-            minlength="3" maxlength="10" pattern="banana" 
-            name="firstName" #firstName="ngModel" 
-            (change)="log(firstName)" id="firstName" type="text" class="form-control">
-        <!-- Using html 5 validations like "minlength", "maxlength" and "pattern" -->
-        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
-            <!-- Using different validation messages for different validations -->
-            <div *ngIf="firstName.errors.required">
-                First name is required.
-            </div> <!-- Message for Required Validation -->
-            <div *ngIf="firstName.errors.minlength">
-                First name should be of minimum {{ firstName.errors.minlength.requiredLength }} characters
+    <div ngModelGroup="contact" #contact="ngModelGroup"> <!-- Creating a model group directive for the form and assigning to the property "contact" -->
+        <div class="alert alert-danger" *ngIf="contact.touched && !contact.valid">Validating entire Model Group</div>
+        <!-- Validating the model object using model group assigned property "contact" -->
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input required ngModel 
+                minlength="3" maxlength="10" pattern="banana" 
+                name="firstName" #firstName="ngModel" 
+                (change)="log(firstName)" id="firstName" type="text" class="form-control">
+            <!-- Using html 5 validations like "minlength", "maxlength" and "pattern" -->
+            <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+                <!-- Using different validation messages for different validations -->
+                <div *ngIf="firstName.errors.required">
+                    First name is required.
+                </div> <!-- Message for Required Validation -->
+                <div *ngIf="firstName.errors.minlength">
+                    First name should be of minimum {{ firstName.errors.minlength.requiredLength }} characters
+                </div>
+                <!-- Message for minimum length validation and using required length number dynamically by "requiredLength" -->
+                <div *ngIf="firstName.errors.pattern">
+                    First name doesn't match the pattern
+                </div>
+                <!-- Message for pattern validation -->
             </div>
-            <!-- Message for minimum length validation and using required length number dynamically by "requiredLength" -->
-            <div *ngIf="firstName.errors.pattern">
-                First name doesn't match the pattern
-            </div>
-            <!-- Message for pattern validation -->
         </div>
     </div>
+    
     <div class="form-group">
         <label for="comment">Comment</label>
         <textarea ngModel name="comment" id="comment" cols="30" rows="10" for="comment" class="form-control"></textarea>
