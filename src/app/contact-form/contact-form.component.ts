@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class ContactFormComponent {
 
   log(x: string){
-    console.log(x);
-    
+    console.log(x);    
+  }
+
+  submit(f) { // Creating a submit method that is called in the form and using the template variable "f" to log it
+    console.log(f);    
   }
   
 

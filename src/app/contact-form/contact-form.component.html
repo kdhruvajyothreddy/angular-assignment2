@@ -1,4 +1,5 @@
-<form>
+<form #f="ngForm" (ngSubmit)="submit(f)"> <!-- Creating a template variable "f" and set it to ngForm. 
+    Placing event binding using ngSubmit by calling a method "submit" and passing the template variable "f" -->
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input required ngModel 
