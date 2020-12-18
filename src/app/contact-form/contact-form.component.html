@@ -32,5 +32,6 @@
         <textarea ngModel name="comment" id="comment" cols="30" rows="10" for="comment" class="form-control"></textarea>
         <!-- Using ngModel here too, to create an instance of a form control class and associate with this input field -->
     </div>
-    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button> 
+    <!-- Using property binding with the property "disabled" to disable Submit until the template form variable "f" is valid -->
 </form>
