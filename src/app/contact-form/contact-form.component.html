@@ -52,20 +52,14 @@
     <!-- Creating a form element to display drop down list -->
 
     <div class="form-group">
-        <div class="radio">
+        <div *ngFor="let method of contactMethods" class="radio"> <!-- Using ngFor to display elements dynamically from backend -->
             <label for="">
-                <input ngModel type="radio" name="contactMethod" value="1">
-                Email
-            </label>
-        </div>
-        <div class="radio">
-            <label for="">
-                <input ngModel type="radio" name="contactMethod" value="2">
-                Phone
+                <input ngModel type="radio" name="contactMethod" [value]="method.id"> <!-- Using property binding to use the assigned id using "[value]" -->
+                {{ method.name }} <!-- Displaying elements from backend -->
             </label>
         </div>
     </div>
-    <!-- Using radio buttons hardcoded and binding a value to each of the options -->
+    <!-- Using radio buttons and displaying them using property binding -->
 
     <p>
         {{ f.value | json }}
