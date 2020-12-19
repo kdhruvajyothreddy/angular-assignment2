@@ -39,6 +39,18 @@
                 setting a name attribute "isSubscribed" -->
         </label>
     </div>
+    
+    <div class="form-group">
+        <label for="contactMethod">Contact Method  </label>
+        <select ngModel name="contactMethod" id="contactMethod" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option>
+            <!-- Displaying elements for drop down by recurring element using ngFor and using property binding using [value]
+                 to bind with each element using its id -->
+        </select>
+    </div>
+    <!-- Creating a form element to display drop down list -->
+
     <p>
         {{ f.value | json }}
         <!-- Rendering the json object "f.value" to just check the values and setting the format as json using pipe -->
