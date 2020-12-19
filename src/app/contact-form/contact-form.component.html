@@ -51,6 +51,22 @@
     </div>
     <!-- Creating a form element to display drop down list -->
 
+    <div class="form-group">
+        <div class="radio">
+            <label for="">
+                <input ngModel type="radio" name="contactMethod" value="1">
+                Email
+            </label>
+        </div>
+        <div class="radio">
+            <label for="">
+                <input ngModel type="radio" name="contactMethod" value="2">
+                Phone
+            </label>
+        </div>
+    </div>
+    <!-- Using radio buttons hardcoded and binding a value to each of the options -->
+
     <p>
         {{ f.value | json }}
         <!-- Rendering the json object "f.value" to just check the values and setting the format as json using pipe -->
