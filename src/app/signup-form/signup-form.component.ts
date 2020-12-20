@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'signup-form',
@@ -8,8 +8,17 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
-  // Creating FormGroup and FormControl objects in TypeScript with keys for username and password input fields
+  // Using the "Validators" element to each key of the "form" object to set validation conditions(in this case, "required") 
+
+  get username() {
+    return this.form.get("username");
+  }
+  get password() {
+    return this.form.get("password");
+  }
+  // The above getter methods username() & password() are to return the key values of "username" and "password" of the "form" object
+
 }
