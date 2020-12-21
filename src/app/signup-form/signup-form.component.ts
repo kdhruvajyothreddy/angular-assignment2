@@ -8,7 +8,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupFormComponent {
   form = new FormGroup({
-    username: new FormControl('', Validators.required),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]), // Creating a array of validator conditions (required and minimum length) for the username key
     password: new FormControl('', Validators.required)
   });
   // Using the "Validators" element to each key of the "form" object to set validation conditions(in this case, "required") 
