@@ -10,6 +10,7 @@
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
             <div *ngIf="username.errors.required">Username is required.</div>
             <div *ngIf="username.errors.minlength">Username should be of minimum {{ username.errors.minlength.requiredLength }} characters.</div>
+            <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div> <!-- Using the custom validator to show the error message -->
             <!-- Creating multiple validation messages for the Username field for different validators (required, minimum length)
                  by retreiving the "username" key value from the username getter method from TypeScript code -->
         </div>
