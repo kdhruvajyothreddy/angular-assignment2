@@ -11,4 +11,16 @@ export class UsernameValidators {
             return null;            
         } 
     }
+
+    static shouldBeUnique(control: AbstractControl): ValidationErrors | null {
+        // Creating a method for custom validation, just as the above method "cannotContainSpace"
+        setTimeout(() => {
+            if (control.value == "dhruv") {
+                return { shouldBeUnique:true };
+            } else {
+                return null;
+            } 
+        }, 2000); // Setting timeout function with timer in milliseconds while connecting to the server while performing an operation
+        return null; // Returning null to just avoid syntax error
+    } 
 }
