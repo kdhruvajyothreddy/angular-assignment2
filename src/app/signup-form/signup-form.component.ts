@@ -20,6 +20,12 @@ export class SignupFormComponent {
   });
   // Using the "Validators" element to each key of the "form" object to set validation conditions(in this case, "required") 
 
+  login() { // Created a login() method where an object with the data from the server is used
+    this.form.setErrors({
+      invalidLogin: true // Using the form control object and setting errors to it. Also creating a property and setting it to true based on API
+    });
+  }
+
   get username() {
     return this.form.get("username");
   }
