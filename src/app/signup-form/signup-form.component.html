@@ -7,6 +7,8 @@
             type="text" 
             class="form-control">
             <!-- Using formControlName directive to bind with "username" key from "form" object in TypeScript code -->
+        <div *ngIf="username.pending">Checking for uniqueness....</div> <!-- To show loader text/image for async operations. 
+            Using formControlName and its property "pending" -->
         <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
             <div *ngIf="username.errors.required">Username is required.</div>
             <div *ngIf="username.errors.minlength">Username should be of minimum {{ username.errors.minlength.requiredLength }} characters.</div>
