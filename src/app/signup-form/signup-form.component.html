@@ -13,6 +13,7 @@
             <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div> <!-- Using the custom validator to show the error message -->
             <!-- Creating multiple validation messages for the Username field for different validators (required, minimum length)
                  by retreiving the "username" key value from the username getter method from TypeScript code -->
+            <div *ngIf="username.errors.shouldBeUnique">Username is already taken.</div> <!-- Using the custom asynchronous validator to show the error message -->
         </div>
     </div>
 

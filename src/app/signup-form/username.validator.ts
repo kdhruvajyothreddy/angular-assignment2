@@ -12,15 +12,16 @@ export class UsernameValidators {
         } 
     }
 
-    static shouldBeUnique(control: AbstractControl): ValidationErrors | null {
+    static shouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
         // Creating a method for custom validation, just as the above method "cannotContainSpace"
-        setTimeout(() => {
-            if (control.value == "dhruv") {
-                return { shouldBeUnique:true };
-            } else {
-                return null;
-            } 
-        }, 2000); // Setting timeout function with timer in milliseconds while connecting to the server while performing an operation
-        return null; // Returning null to just avoid syntax error
+        return new Promise((resolve, reject) => { // API to use to return a "Promise" for any custom asynchronous validator
+            setTimeout(() => {
+                if (control.value === "dhruv") { // Simulate to check the username availability with the server for a single username "dhruv"
+                    resolve({ shouldBeUnique:true });
+                } else {
+                    resolve(null);
+                } 
+            }, 2000); // Setting timeout function with timer in milliseconds while connecting to the server while performing an operation
+        });
     } 
 }

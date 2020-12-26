@@ -14,7 +14,8 @@ export class SignupFormComponent {
       Validators.minLength(3),
       UsernameValidators.cannotContainSpace
       // Adding our custom validator in the array of validators for the username key
-    ]), // Creating a array of validator conditions (required and minimum length) for the username key
+    ], // Creating a array of validator conditions (required and minimum length) for the username key
+      UsernameValidators.shouldBeUnique), // Adding the custom async validator separately from other validators
     password: new FormControl('', Validators.required)
   });
   // Using the "Validators" element to each key of the "form" object to set validation conditions(in this case, "required") 
