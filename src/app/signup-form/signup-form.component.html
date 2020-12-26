@@ -1,40 +1,41 @@
-<form [formGroup]="form" (ngSubmit)="login()"> <!-- Using formGroup directive to bind with the object "form" from TypeScript code -->
-    <!-- Binding the output property or event "ngSubmit" with the "login()" method to validate after Submit button -->
+<form [formGroup]="form"> <!-- Using formGroup directive to bind with the object "form" from TypeScript code -->
     <div *ngIf="form.errors" class="alert alert-danger">
         The username or password is invalid.
     </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input 
-            formControlName="username"
-            id="username" 
-            type="text" 
-            class="form-control">
-            <!-- Using formControlName directive to bind with "username" key from "form" object in TypeScript code -->
-        <div *ngIf="username.pending">Checking for uniqueness....</div> <!-- To show loader text/image for async operations. 
-            Using formControlName and its property "pending" -->
-        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
-            <div *ngIf="username.errors.required">Username is required.</div>
-            <div *ngIf="username.errors.minlength">Username should be of minimum {{ username.errors.minlength.requiredLength }} characters.</div>
-            <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div> <!-- Using the custom validator to show the error message -->
-            <!-- Creating multiple validation messages for the Username field for different validators (required, minimum length)
-                 by retreiving the "username" key value from the username getter method from TypeScript code -->
-            <div *ngIf="username.errors.shouldBeUnique">Username is already taken.</div> <!-- Using the custom asynchronous validator to show the error message -->
+    <div formGroupName="account"> <!-- Creating a new FormGroupName "account" under which the form-groups lie -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input 
+                formControlName="username"
+                id="username" 
+                type="text" 
+                class="form-control">
+                <!-- Using formControlName directive to bind with "username" key from "form" object in TypeScript code -->
+            <div *ngIf="username.pending">Checking for uniqueness....</div> <!-- To show loader text/image for async operations. 
+                Using formControlName and its property "pending" -->
+            <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+                <div *ngIf="username.errors.required">Username is required.</div>
+                <div *ngIf="username.errors.minlength">Username should be of minimum {{ username.errors.minlength.requiredLength }} characters.</div>
+                <div *ngIf="username.errors.cannotContainSpace">Username cannot contain space.</div> <!-- Using the custom validator to show the error message -->
+                <!-- Creating multiple validation messages for the Username field for different validators (required, minimum length)
+                    by retreiving the "username" key value from the username getter method from TypeScript code -->
+                <div *ngIf="username.errors.shouldBeUnique">Username is already taken.</div> <!-- Using the custom asynchronous validator to show the error message -->
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input 
-            formControlName="password"
-            id="password" 
-            type="text" 
-            class="form-control">
-            <!-- Using formControlName directive to bind with "password" key from "form" object in TypeScript code -->
-        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-            Password is required.
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input 
+                formControlName="password"
+                id="password" 
+                type="text" 
+                class="form-control">
+                <!-- Using formControlName directive to bind with "password" key from "form" object in TypeScript code -->
+            <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                Password is required.
+            </div>
+            <!-- Validating the Password field by retreiving the "password" key value from the password getter method from TypeScript code -->
         </div>
-        <!-- Validating the Password field by retreiving the "password" key value from the password getter method from TypeScript code -->
     </div>
     <button class="btn btn-primary" type="submit">Sign Up</button>
 </form>
