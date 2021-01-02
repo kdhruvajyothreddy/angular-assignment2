@@ -1,40 +1,13 @@
-<form #courseForm="ngForm" (ngSubmit)="submit(courseForm)">
-    
-    <div class="form-group">
-        <label for="courseName">Course Name</label>
-        <input required ngModel name="courseName" #courseName="ngModel" class="form-control" id="courseName" type="text" minlength="5">
-        <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid">
-            <div *ngIf="courseName.errors.required">
-                Course Name is required.
-            </div>
-            <div *ngIf="courseName.errors.minlength">
-                Name should be minimum {{ courseName.errors.minlength.requiredLength }} characters.
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="category">Category</label>
-        <select required ngModel name="category" #category="ngModel" id="category" class="form-control">
-            <option value=""></option>
-            <option *ngFor="let category of categoryTypes" [value]="category.id">{{ category.name }}</option>
-        </select>
-        <div class="alert alert-danger" *ngIf="category.touched && !category.valid">
-            <div *ngIf="category.errors.required">
-                Category is required.
-            </div>
-        </div>
-    </div>
-
-    <div class="checkbox">
-        <label for="">
-            <input type="checkbox" ngModel name="hasGuarantee"> 30-day money-back guarantee
-        </label>
-    </div>
-
-    <p>
-        {{ courseForm.value | json }}
-    </p>
-
-    <button class="btn btn-primary">Create</button>
-</form>
+<form>
+    <input type="text" class="form-control" 
+         (keyup.enter)="addTopic(topic)" #topic>
+     <!-- Adding a keyup event with the filter for "enter" and calling a method "addTopic()" to pass the template variable "topic" -->
+    <ul class="list-group">
+        <li *ngFor="let topic of topics.controls" (click)="removeTopic(topic)" class="list-group-item">
+            <!-- List all the values entered into the input field and 
+                 using (click) event to call the method "removeTopic()" and passing the property -->
+            {{ topic.value }}
+            <!-- Listing all the property values using interpolation -->
+        </li>
+    </ul>
+ </form>
