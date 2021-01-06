@@ -34,4 +34,12 @@ export class PostsComponent {
     });
    }
 
+   updatePost(post) { // Passing the post object to the method to update data
+     this.http.put(this.url + "/" + post.id, JSON.stringify(post)).subscribe(resolve => { // Updating data using put method with the updated url and
+        // updating url with post's id. The post object is also converted to a JSON string
+       console.log(resolve);
+       
+     })
+   }
+
 }

@@ -3,6 +3,8 @@
 <ul class="list-group">
     <!-- For every property in the "posts" array -->
     <li *ngFor="let post of posts" class="list-group-item">
+        <button (click)="updatePost(post)" class="btn btn-secondary btn-sm">Update</button> <!-- Creating an "update" button for each option and 
+            creating a click event and calling a method "updatePost()" to pass the "post" object -->
         {{ post.title }}
         <!-- Using interpolation to show the "title" item of each property from JSON -->
     </li>
