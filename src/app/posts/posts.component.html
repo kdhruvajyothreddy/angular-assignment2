@@ -5,6 +5,9 @@
     <li *ngFor="let post of posts" class="list-group-item">
         <button (click)="updatePost(post)" class="btn btn-secondary btn-sm">Update</button> <!-- Creating an "update" button for each option and 
             creating a click event and calling a method "updatePost()" to pass the "post" object -->
+        &nbsp;
+        <button (click)="deletePost(post)" class="btn btn-danger btn-sm">Delete</button> <!-- Creating a "delete" button for each option and
+            creating a click event and calling a method "deletePost()" to pass the "post" object -->
         {{ post.title }}
         <!-- Using interpolation to show the "title" item of each property from JSON -->
     </li>

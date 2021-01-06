@@ -37,9 +37,15 @@ export class PostsComponent {
    updatePost(post) { // Passing the post object to the method to update data
      this.http.put(this.url + "/" + post.id, JSON.stringify(post)).subscribe(resolve => { // Updating data using put method with the updated url and
         // updating url with post's id. The post object is also converted to a JSON string
-       console.log(resolve);
-       
-     })
+       console.log(resolve);       
+     });
+   }
+
+   deletePost(post) { // Passing the post object to the method to delete data
+     this.http.delete(this.url + "/" + post.id).subscribe(resolve => {  // Deleting data using delete method with the updated url
+       let index = this.posts.indexOf(post);  // Creating a variable "index" to store the index value of the selected "post" that was passed
+       this.posts.splice(index, 1); // Removing the selected post and indicating it using the index variable and the number of "post"s to be removed
+     });
    }
 
 }
