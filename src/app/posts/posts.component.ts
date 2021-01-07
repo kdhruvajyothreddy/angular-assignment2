@@ -7,12 +7,12 @@ import { resolve } from 'url';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent {
+export class PostsComponent implements OnInit {
   posts = []; // Creating a variable as an array
   private url = 'http://jsonplaceholder.typicode.com/posts';  // Created a private variable to use it for URL to JSON
 
-  constructor(private http: HttpClient) { // Using a constructor to inject Http client data
-    http.get(this.url).subscribe(resolve => {  // Getting data from a link to use "subscribe" 
+  ngOnInit() {  // Using ngOnInit() interface instead of constructor, as it is a good coding practice to use it to load while initialization
+    this.http.get(this.url).subscribe(resolve => {  // Getting data from a link to use "subscribe" 
       // and setting data to "resolve" interface which is a data provider
       for (let key in resolve) {  //  For every property in the data interface "resolve"
         if (resolve.hasOwnProperty(key)) {  //  If "resolve" interface has a property,
@@ -20,6 +20,10 @@ export class PostsComponent {
         }        
       }
     });
+  }
+
+  constructor(private http: HttpClient) {
+    
    }
    
    createPost(input: HTMLInputElement) {  // Expecting a HTML Input element
