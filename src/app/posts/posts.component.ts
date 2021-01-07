@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { resolve } from 'url';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'posts',
@@ -9,10 +9,10 @@ import { resolve } from 'url';
 })
 export class PostsComponent implements OnInit {
   posts = []; // Creating a variable as an array
-  private url = 'http://jsonplaceholder.typicode.com/posts';  // Created a private variable to use it for URL to JSON
+  
 
   ngOnInit() {  // Using ngOnInit() interface instead of constructor, as it is a good coding practice to use it to load while initialization
-    this.http.get(this.url).subscribe(resolve => {  // Getting data from a link to use "subscribe" 
+    this.service.getPosts().subscribe(resolve => {  // Getting data from a link to use "subscribe" 
       // and setting data to "resolve" interface which is a data provider
       for (let key in resolve) {  //  For every property in the data interface "resolve"
         if (resolve.hasOwnProperty(key)) {  //  If "resolve" interface has a property,
@@ -22,7 +22,7 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private service: PostService) { // Passing PostService class variable into the constructor
     
    }
    
@@ -30,7 +30,7 @@ export class PostsComponent implements OnInit {
     let post: any = {title: input.value}; // Creating a "post" object which has a "title" and the value of "title" will be the passed value
     input.value = '';
 
-    this.http.post(this.url, JSON.stringify(post)).subscribe(resolve => { // Creating a post method to post data and convert to JSON
+   this.service.createPosts(post).subscribe(resolve => { // Creating a post method to post data and convert to JSON
       post['id'] = resolve; // Getting the id from the server and storing it in the post object
       this.posts.splice(0, 0, post);  // Splice or pushing the object to a specific object and 
         // setting parameters accordingly: (starting postion, number of objects to be deleted, object to be added at the starting position)
@@ -39,14 +39,14 @@ export class PostsComponent implements OnInit {
    }
 
    updatePost(post) { // Passing the post object to the method to update data
-     this.http.put(this.url + "/" + post.id, JSON.stringify(post)).subscribe(resolve => { // Updating data using put method with the updated url and
+     this.service.updatePosts(post).subscribe(resolve => { // Updating data using put method with the updated url and
         // updating url with post's id. The post object is also converted to a JSON string
        console.log(resolve);       
      });
    }
 
    deletePost(post) { // Passing the post object to the method to delete data
-     this.http.delete(this.url + "/" + post.id).subscribe(resolve => {  // Deleting data using delete method with the updated url
+     this.service.deletePosts(post.id).subscribe(resolve => {  // Deleting data using delete method with the updated url
        let index = this.posts.indexOf(post);  // Creating a variable "index" to store the index value of the selected "post" that was passed
        this.posts.splice(index, 1); // Removing the selected post and indicating it using the index variable and the number of "post"s to be removed
      });
