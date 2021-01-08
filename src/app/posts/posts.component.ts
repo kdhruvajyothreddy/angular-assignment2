@@ -59,6 +59,10 @@ export class PostsComponent implements OnInit {
      this.service.deletePosts(post.id).subscribe(resolve => {  // Deleting data using delete method with the updated url
        let index = this.posts.indexOf(post);  // Creating a variable "index" to store the index value of the selected "post" that was passed
        this.posts.splice(index, 1); // Removing the selected post and indicating it using the index variable and the number of "post"s to be removed
+     }, error => {
+       alert("An unexpected error occurred");
+       console.log(error);
+       
      });
    }
 
