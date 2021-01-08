@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { resolve } from 'url';
 import { PostService } from '../services/post.service';
@@ -19,6 +20,9 @@ export class PostsComponent implements OnInit {
           this.posts.push(resolve[key]);  //  Then push each property to the "posts" array which is initialized in the start
         }        
       }
+    }, error => {
+      alert("An unexpected error occurred.");
+      console.log(error);      
     });
   }
 
@@ -35,6 +39,9 @@ export class PostsComponent implements OnInit {
       this.posts.splice(0, 0, post);  // Splice or pushing the object to a specific object and 
         // setting parameters accordingly: (starting postion, number of objects to be deleted, object to be added at the starting position)
       console.log(resolve);      
+    }, error => {
+      alert("An unexpected error occurred.");
+      console.log(error);      
     });
    }
 
@@ -42,6 +49,9 @@ export class PostsComponent implements OnInit {
      this.service.updatePosts(post).subscribe(resolve => { // Updating data using put method with the updated url and
         // updating url with post's id. The post object is also converted to a JSON string
        console.log(resolve);       
+     }, error => {
+       alert("An unexpected error occurred");
+       console.log(error);       
      });
    }
 
