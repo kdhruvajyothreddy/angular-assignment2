@@ -1,5 +1,7 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { Resolve } from '@angular/router';
+import { from } from 'rxjs';
 import { resolve } from 'url';
 import { PostService } from '../services/post.service';
 
@@ -39,9 +41,14 @@ export class PostsComponent implements OnInit {
       this.posts.splice(0, 0, post);  // Splice or pushing the object to a specific object and 
         // setting parameters accordingly: (starting postion, number of objects to be deleted, object to be added at the starting position)
       console.log(resolve);      
-    }, error => {
-      alert("An unexpected error occurred.");
-      console.log(error);      
+    }, (error: Response) => {
+      if (error.status === 400) { // In case the error is 400 or bad data
+        alert("The same post already been created.");
+        // this.form.setErrors(error); // Setting errors incase we want the error message to show up on the form
+      } else {
+        alert("An unexpected error occurred.");
+        console.log(error);        
+      }      
     });
    }
 
@@ -59,9 +66,13 @@ export class PostsComponent implements OnInit {
      this.service.deletePosts(post.id).subscribe(resolve => {  // Deleting data using delete method with the updated url
        let index = this.posts.indexOf(post);  // Creating a variable "index" to store the index value of the selected "post" that was passed
        this.posts.splice(index, 1); // Removing the selected post and indicating it using the index variable and the number of "post"s to be removed
-     }, error => {
-       alert("An unexpected error occurred");
-       console.log(error);
+     }, (error: Response) => {  // Annotating the "error" parameter with the Reponse class
+       if (error.status === 404) {  // In case the error status is 404 or Data not found
+         alert("This post has already been deleted.")
+       } else {
+        alert("An unexpected error occurred");
+        console.log(error);
+       }      
        
      });
    }
