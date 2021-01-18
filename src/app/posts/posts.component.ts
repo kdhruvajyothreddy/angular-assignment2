@@ -25,9 +25,6 @@ export class PostsComponent implements OnInit {
           this.posts.push(resolve[key]);  //  Then push each property to the "posts" array which is initialized in the start
         }        
       }
-    }, error => {
-      alert("An unexpected error occurred.");
-      console.log(error);      
     });
   }
 
@@ -48,10 +45,7 @@ export class PostsComponent implements OnInit {
       if (error instanceof BadInput) { // In case the error is an instance of BadInput class
         alert("The same post already been created.");
         // this.form.setErrors(error.originalError); // Setting errors incase we want the error message to show up on the form
-      } else {
-        alert("An unexpected error occurred.");
-        console.log(error);        
-      }      
+      } else throw error; // Re-Throwing the error back so it can be handled by Global error handler (app-error-handler.ts)
     });
    }
 
@@ -59,9 +53,6 @@ export class PostsComponent implements OnInit {
      this.service.updatePosts(post).subscribe(resolve => { // Updating data using put method with the updated url and
         // updating url with post's id. The post object is also converted to a JSON string
        console.log(resolve);       
-     }, error => {
-       alert("An unexpected error occurred");
-       console.log(error);       
      });
    }
 
@@ -72,11 +63,7 @@ export class PostsComponent implements OnInit {
      }, (error: AppError) => {  // Annotating the "error" parameter with the Reponse class
        if (error instanceof NotFoundError) {  // In case the error is an instance of NotFoundError class
          alert("This post has already been deleted.")
-       } else {
-        alert("An unexpected error occurred");
-        console.log(error);
-       }      
-       
+       } else throw error;  // Re-Throwing the error back so it can be handled by Global error handler (app-error-handler.ts)
      });
    }
 
