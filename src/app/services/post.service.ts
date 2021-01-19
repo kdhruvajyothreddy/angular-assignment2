@@ -22,13 +22,7 @@ export class PostService {
 
   createPosts(post) {
     return this.http.post(this.url, JSON.stringify(post)).pipe( // Catching error and throwing back error response using "pipe" method
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 400) { // Checking if error status is "400"
-          return throwError(new BadInput(error));
-        } else {
-          return throwError(new AppError(error));
-        }
-      })
+      catchError(this.handleError)  //  Moved the error handling code to "handleError" method and passing it as a reference
     );
   }
 
@@ -38,13 +32,18 @@ export class PostService {
 
   deletePosts(id) {
     return this.http.delete(this.url + "/" + id).pipe(  // Catching error and throwing back error response using "pipe" method
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 404) { // Checking if error status is "404"
-          return throwError(new NotFoundError());
-        } else {
-          return throwError(new AppError(error));
-        }
-      })
+      catchError(this.handleError)  //  Moved the error handling code to "handleError" method and passing it as a reference
     );
+  }
+
+  private handleError(error: Response) {  // Creating a private error handler method and passing the error object of type "Response"
+    if (error.status === 400) { // Checking if error status is "400"
+        return throwError(new BadInput(error));
+    }
+    if (error.status === 404) { // Checking if error status is "404"
+      return throwError(new NotFoundError());
+    } else {
+      return throwError(new AppError(error));
+    }
   }
 }
